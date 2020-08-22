@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { colorsByLength, colors } from "./Components/Colors";
+import styles from "./App.module.css";
 
-function App() {
+export default function App() {
+  const [copy, setCopy] = useState("");
+  const [show, setShow] = useState(false);
+
+  const copyColors = async (event: any) => {
+    let value = event.target.innerHTML;
+    navigator.clipboard &&
+      (await (navigator.clipboard.writeText(colors[`${value}`]),
+      navigator.clipboard.readText()));
+    // getColor(value);
+    setCopy(value);
+    setShow(true);
+    setTimeout(() => {
+      setShow(false);
+    }, 600);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className={styles.app}>
+        {colorsByLength.map((color) => (
+          <span
+            onClick={copyColors}
+            className={styles.item}
+            key={color}
+            style={{ background: `${color}` }}>
+            {color}
+          </span>
+        ))}
+      </div>
+
+      {show && (
+        <div style={{ background: `${copy}` }} className={styles.copy}>
+          <span className={styles.copyText}>copied It : {copy}</span>
+        </div>
+      )}
+    </>
   );
 }
-
-export default App;

@@ -1,0 +1,56 @@
+body {
+  font-family: Barlow;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.app {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: Barlow;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.item {
+  height: 25vh;
+  color: white;
+  font-size: 1.5em;
+  flex: 1 1 clamp(110px, 20vw, 35vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.copy {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 3.5em;
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: all 0.5s ease-in-out;
+  text-align: center;
+}
+
+.copyText {
+  filter: drop-shadow(1px 1px 2px black);
+  color: white;
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
